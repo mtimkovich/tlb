@@ -6,21 +6,24 @@ import random
 import sys
 
 
+def is_comment(s):
+    return s.startswith('//')
+
 def randline(filename):
     """
-    Prefix a line with # to comment it
+    Prefix a line with // to comment it
     """
     output = ''
 
     with open(filename) as f:
         for line in f:
-            if not line.startswith('#'):
+            if not is_comment(line):
                 output = line
                 break
 
         i = 1
         for line in f:
-            if line.startswith('#'):
+            if is_comment(line):
                 continue
 
             if not random.randint(0, i):
