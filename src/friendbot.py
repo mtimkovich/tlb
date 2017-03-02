@@ -45,6 +45,8 @@ for txt in os.listdir('friends'):
 
         if user:
             output = output.replace('${name}', user)
+        
+        output = output.replace('${newline}', '\n')
 
         print(json.dumps({'text': output}))
         break
