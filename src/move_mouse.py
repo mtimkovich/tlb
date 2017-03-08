@@ -1,11 +1,12 @@
+#!/usr/bin/python
 """
 This is for keeping Ernest's computer awake while playing Smash
+
+Requires autopy from https://github.com/msanders/autopy
 """
-#!/usr/bin/python
 import autopy
 import time
 
-# Requires autopy from https://github.com/msanders/autopy
 
 def move(x, y):
     try:
