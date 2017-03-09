@@ -48,6 +48,7 @@ print('Content-Type: application/json\n')
 form = cgi.FieldStorage()
 
 text = form.getvalue('trigger_word', '')
+all_text = form.getvalue('all_text', '')
 domain = form.getvalue('team_domain', '')
 user = form.getvalue('user_name', '${name}')
 
@@ -64,6 +65,9 @@ friend_map = {
     'U410D66MA': 'max',
     'U40SH115Z': 'jonat'
 }
+
+if text != all_text:
+    sys.exit(0)
 
 if text.startswith('!') and text.endswith('bot'):
     friend = text[1:-3]
