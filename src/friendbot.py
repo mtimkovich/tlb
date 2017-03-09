@@ -9,6 +9,7 @@ import sys
 def is_comment(s):
     return s.startswith('//')
 
+
 def randline(filename):
     """
     Prefix a line with // to comment it
@@ -55,12 +56,12 @@ if domain != 'thelonelybear':
 
 # Map Slack IDs to names
 friend_map = {
-    'U406YM1JL': 'justinatlaw',
-    'U40UP9YEN', 'chandyland',
-    'U407FJ7KK', 'zarol',
-    'U407EU12M', 'childish-landrito',
-    'U407JD1K3', 'bobo',
-    'U410D66MA': 'djswerve',
+    'U406YM1JL': 'justin',
+    'U40UP9YEN': 'claire',
+    'U407FJ7KK': 'jay',
+    'U407EU12M': 'ernest',
+    'U407JD1K3': 'boston',
+    'U410D66MA': 'max',
     'U40SH115Z': 'jonat'
 }
 
