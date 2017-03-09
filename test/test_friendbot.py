@@ -96,7 +96,7 @@ def test_mention(server):
 
 def test_file_upload(server):
     params = get_trigger('<@U406YM1JL')
-    params['text'] += ' uploaded a file'
+    params['text'] += ' uploaded a file:'
     r = requests.post(URL, data=params)
 
     assert not r.text, 'Response should be empty'
