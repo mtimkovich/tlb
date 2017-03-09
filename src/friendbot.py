@@ -76,11 +76,13 @@ elif text.startswith('<@'):
 else:
     sys.exit(1)
 
-for txt in os.listdir('friends'):
+friends_dir = 'friends'
+
+for txt in os.listdir(friends_dir):
     file_name = os.path.splitext(txt)[0]
 
     if friend == file_name:
-        output = randline(os.path.join('friends', txt))
+        output = randline(os.path.join(friends_dir, txt))
 
         # var replacement
         output = output.replace('${name}', user)
