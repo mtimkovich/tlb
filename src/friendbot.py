@@ -48,12 +48,16 @@ print('Content-Type: application/json\n')
 form = cgi.FieldStorage()
 
 text = form.getvalue('trigger_word', '')
-all_text = form.getvalue('all_text', '')
+all_text = form.getvalue('text', '')
 domain = form.getvalue('team_domain', '')
 user = form.getvalue('user_name', '${name}')
 
 if domain != 'thelonelybear':
     sys.exit(1)
+
+# Debug code
+# with open('friend_log', 'a') as f:
+#     f.write(all_text + '\n')
 
 # Map Slack IDs to names
 friend_map = {
@@ -66,7 +70,8 @@ friend_map = {
     'U40SH115Z': 'jonat'
 }
 
-if text != all_text:
+# This is a file upload, ignore it
+if 'uploaded a file:' in all_text:
     sys.exit(0)
 
 if text.startswith('!') and text.endswith('bot'):
