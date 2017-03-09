@@ -53,10 +53,23 @@ user = form.getvalue('user_name', '${name}')
 if domain != 'thelonelybear':
     sys.exit(1)
 
-if not text.startswith('!') and not text.endswith('bot'):
-    sys.exit(1)
+# Map Slack IDs to names
+friend_map = {
+    'U406YM1JL': 'justinatlaw',
+    'U40UP9YEN', 'chandyland',
+    'U407FJ7KK', 'zarol',
+    'U407EU12M', 'childish-landrito',
+    'U407JD1K3', 'bobo',
+    'U410D66MA': 'djswerve',
+    'U40SH115Z': 'jonat'
+}
 
-friend = text[1:-3]
+if text.startswith('!') and text.endswith('bot'):
+    friend = text[1:-3]
+elif text.startswith('<@'):
+    friend = friend_map[text[2:]]
+else:
+    sys.exit(1)
 
 for txt in os.listdir('friends'):
     file_name = os.path.splitext(txt)[0]
