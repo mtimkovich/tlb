@@ -43,7 +43,7 @@ def server():
 
     # Replace the friends_dir value
     sp.call(['perl', '-i', '-pe', "s#friends_dir = .*#friends_dir = 'cgi-bin/friends'#", 'cgi-bin/friendbot.py'])
-    p = sp.Popen('python3 -m http.server --cgi 3000'.split())
+    p = sp.Popen(['python3', '-m', 'http.server', '--cgi', '3000'])
     time.sleep(1)
 
     yield
