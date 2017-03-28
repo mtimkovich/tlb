@@ -89,6 +89,10 @@ for txt in os.listdir(friends_dir):
     if friend == file_name:
         output = randline(os.path.join(friends_dir, txt))
 
+        # Seasonal change
+        if friend == 'justin' and random.randint(0, 4) == 0:
+            output = "I can't, I'm studying."
+
         # var replacement
         output = output.replace('${name}', user)
         output = output.replace('${newline}', '\n')

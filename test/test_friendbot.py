@@ -79,7 +79,7 @@ def test_exclamation(server):
 
     text = r.json()['text']
     valid = in_corpus(text, friend)
-    assert valid, 'Invalid response'
+    assert valid, 'Invalid response ' + text
 
 
 def test_mention(server):
@@ -91,7 +91,7 @@ def test_mention(server):
 
     text = r.json()['text']
     valid = in_corpus(text, friend)
-    assert valid, 'Invalid response'
+    assert valid, 'Invalid response ' + text
 
 
 def test_file_upload(server):
