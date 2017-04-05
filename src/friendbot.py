@@ -70,13 +70,15 @@ friend_map = {
     'U40SH115Z': 'jonat'
 }
 
-# This is a file upload, ignore it
-if 'uploaded a file:' in all_text:
-    sys.exit(0)
-
 if text.startswith('!') and text.endswith('bot'):
     friend = text[1:-3]
 elif text.startswith('<@'):
+    # This is a file upload, ignore it
+    if ('uploaded a file:' in all_text or
+            'commented on' in all_text or
+            'set the' in all_text):
+        sys.exit(0)
+
     friend = friend_map[text[2:]]
 else:
     sys.exit(1)
@@ -88,10 +90,6 @@ for txt in os.listdir(friends_dir):
 
     if friend == file_name:
         output = randline(os.path.join(friends_dir, txt))
-
-        # Seasonal change
-        if friend == 'justin' and random.randint(0, 4) == 0:
-            output = "I can't, I'm studying."
 
         # var replacement
         output = output.replace('${name}', user)
