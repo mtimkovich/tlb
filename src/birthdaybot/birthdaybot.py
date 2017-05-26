@@ -1,8 +1,11 @@
 #!/usr/bin/env python3
 import csv
 import datetime
+import os
 from slackclient import SlackClient
 import yaml
+
+os.chdir(os.path.dirname(os.path.realpath(__file__)))
 
 with open('config.yml') as f:
     config = yaml.load(f)
