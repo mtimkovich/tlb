@@ -4,13 +4,17 @@ import datetime
 from slackclient import SlackClient
 import yaml
 
-# Change channel to '#livingroom' in production
-def post(sc, text):
+with open('config.yml') as f:
+    config = yaml.load(f)
+
+sc = SlackClient(config['token'])
+
+def post(text):
     sc.api_call(
         'chat.postMessage',
         username='birthdaybot',
         icon_emoji=':cake:',
-        channel='#test',
+        channel=config['channel'],
         text=text,
         parse='full'
     )
@@ -24,13 +28,8 @@ with open('birthdays.csv') as f:
         if today == row['birthday']:
             birthdayers.append(row)
 
-with open('slack_token.yml') as f:
-    slack_token = yaml.load(f)['token']
-
-sc = SlackClient(slack_token)
-
 for i, friend in enumerate(birthdayers):
-    post(sc, 'HAPPY BIRTHDAY, {name}!!! @{user} :cake:'.format(**friend))
+    post('HAPPY BIRTHDAY, {name}!!! @{user} :cake:'.format(**friend))
 
     if i < len(birthdayers) - 1:
-        post(sc, 'AND')
+        post('AND')
