@@ -67,7 +67,8 @@ friend_map = {
     'U407EU12M': 'ernest',
     'U407JD1K3': 'boston',
     'U410D66MA': 'max',
-    'U40SH115Z': 'jonat'
+    'U40SH115Z': 'jonat',
+    'U5DQGRFHQ': 'lawrence',
 }
 
 if text.startswith('!') and text.endswith('bot'):
